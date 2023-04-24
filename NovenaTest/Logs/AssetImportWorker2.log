@@ -1,0 +1,356 @@
+Using pre-set license
+Built from '2021.3/staging' branch; Version is '2021.3.5f1 (40eb3a945986) revision 4254522'; Using compiler version '192829333'; Build Type 'Release'
+OS: 'Windows 10  (10.0.19045) 64bit Professional' Language: 'sr' Physical Memory: 16191 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 1
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\2021.3.5f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker2
+-projectPath
+D:/KikiD/PrijaveZaPosao/Zadatci/Novena/Projekt/NovenaUnityTest/NovenaTest
+-logFile
+Logs/AssetImportWorker2.log
+-srvPort
+10085
+Successfully changed project path to: D:/KikiD/PrijaveZaPosao/Zadatci/Novena/Projekt/NovenaUnityTest/NovenaTest
+D:/KikiD/PrijaveZaPosao/Zadatci/Novena/Projekt/NovenaUnityTest/NovenaTest
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Refreshing native plugins compatible for Editor in 27.09 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2021.3.5f1 (40eb3a945986)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2021.3.5f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path D:/KikiD/PrijaveZaPosao/Zadatci/Novena/Projekt/NovenaUnityTest/NovenaTest/Assets
+GfxDevice: creating device client; threaded=0; jobified=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA Quadro T1000 (ID=0x1fb9)
+    Vendor:   NVIDIA
+    VRAM:     3962 MB
+    Driver:   31.0.15.1669
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2021.3.5f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2021.3.5f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/2021.3.5f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56152
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.5f1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.5f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.007813 seconds.
+Native extension for WindowsStandalone target not found
+Native extension for Android target not found
+Refreshing native plugins compatible for Editor in 22.11 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.618 seconds
+Domain Reload Profiling:
+	ReloadAssembly (618ms)
+		BeginReloadAssembly (85ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (0ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (1ms)
+		EndReloadAssembly (414ms)
+			LoadAssemblies (82ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (113ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (30ms)
+			SetupLoadedEditorAssemblies (221ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (54ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (22ms)
+				BeforeProcessingInitializeOnLoad (1ms)
+				ProcessInitializeOnLoadAttributes (101ms)
+				ProcessInitializeOnLoadMethodAttributes (42ms)
+				AfterProcessingInitializeOnLoad (0ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (0ms)
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.000680 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for Android target not found
+Refreshing native plugins compatible for Editor in 0.34 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.907 seconds
+Domain Reload Profiling:
+	ReloadAssembly (908ms)
+		BeginReloadAssembly (244ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (6ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (136ms)
+		EndReloadAssembly (548ms)
+			LoadAssemblies (87ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (172ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (40ms)
+			SetupLoadedEditorAssemblies (232ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (14ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (0ms)
+				BeforeProcessingInitializeOnLoad (54ms)
+				ProcessInitializeOnLoadAttributes (134ms)
+				ProcessInitializeOnLoadMethodAttributes (20ms)
+				AfterProcessingInitializeOnLoad (9ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (6ms)
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
+Refreshing native plugins compatible for Editor in 0.22 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1166 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 12 unused Assets / (111.5 KB). Loaded Objects now: 1640.
+Memory consumption went from 60.4 MB to 60.3 MB.
+Total: 2.609100 ms (FindLiveObjects: 0.138500 ms CreateObjectMapping: 0.041100 ms MarkObjects: 2.327000 ms  DeleteObjects: 0.101400 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 593730.180998 seconds.
+  path: Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF.asset
+  artifactKey: Guid(8f586378b4e144a9851e7b34d9b748ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF.asset using Guid(8f586378b4e144a9851e7b34d9b748ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ef66433efb7cf351662cf33b65c484fc') in 0.177315 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 55.514728 seconds.
+  path: Assets/Font/Epilogue-Black SDF.asset
+  artifactKey: Guid(7964c39f852c32c4385cec405f0532c3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Font/Epilogue-Black SDF.asset using Guid(7964c39f852c32c4385cec405f0532c3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8c5102335f171c47e2d4cb242743c5df') in 0.038462 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 24.267821 seconds.
+  path: Assets/Font/Epilogue-Light SDF.asset
+  artifactKey: Guid(b135396ca1021d9439bbe946f6575c10) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Font/Epilogue-Light SDF.asset using Guid(b135396ca1021d9439bbe946f6575c10) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b332333d001a0f620c53d2030b49dad4') in 0.046600 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 23.342999 seconds.
+  path: Assets/Font/Epilogue-Bold SDF.asset
+  artifactKey: Guid(2277b6b43e2be124b9ebefbefe2fa342) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Font/Epilogue-Bold SDF.asset using Guid(2277b6b43e2be124b9ebefbefe2fa342) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9033769cae0e8b25a74343945560fe3c') in 0.034134 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 10.478134 seconds.
+  path: Assets/Font/Epilogue-BoldItalic SDF.asset
+  artifactKey: Guid(b2dea22f900ab904a8faf55a73a09142) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Font/Epilogue-BoldItalic SDF.asset using Guid(b2dea22f900ab904a8faf55a73a09142) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ac439cb8f54564201937a1db94f1ee07') in 0.034354 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 10.771033 seconds.
+  path: Assets/Font/Epilogue-BlackItalic SDF.asset
+  artifactKey: Guid(4a11ebe9af7134a43808a8161afb778a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Font/Epilogue-BlackItalic SDF.asset using Guid(4a11ebe9af7134a43808a8161afb778a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '08f7f12bfd7ea93733fb4a8be46891b6') in 0.037080 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 17.475163 seconds.
+  path: Assets/Font/Epilogue-ExtraBold SDF.asset
+  artifactKey: Guid(3ec492defe8532a4da95ff2d8b9d3e6a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Font/Epilogue-ExtraBold SDF.asset using Guid(3ec492defe8532a4da95ff2d8b9d3e6a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c26b9417ff5bcd92338f19f68f2b1bf7') in 0.032894 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 9.838363 seconds.
+  path: Assets/Font/Epilogue-ExtraBoldItalic SDF.asset
+  artifactKey: Guid(59798083fcce3e64580a9354336bbc64) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Font/Epilogue-ExtraBoldItalic SDF.asset using Guid(59798083fcce3e64580a9354336bbc64) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '05bd7140479f20949e60b0cd63e48f13') in 0.027474 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 12.614669 seconds.
+  path: Assets/Font/Epilogue-ExtraLight SDF.asset
+  artifactKey: Guid(2ccaba34f1e7a224cba8e8d33252186f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Font/Epilogue-ExtraLight SDF.asset using Guid(2ccaba34f1e7a224cba8e8d33252186f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '284d385ddefe2bb6f5e2b0250135eb79') in 0.034183 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 11.791712 seconds.
+  path: Assets/Font/Epilogue-ExtraLightItalic SDF.asset
+  artifactKey: Guid(f8f58987a9e5def4a9305a68c46a5be6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Font/Epilogue-ExtraLightItalic SDF.asset using Guid(f8f58987a9e5def4a9305a68c46a5be6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9b43bde8617ae18b6f8ab2ccecd8f458') in 0.029874 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 10.259837 seconds.
+  path: Assets/Font/Epilogue-Italic-VariableFont_wght SDF.asset
+  artifactKey: Guid(87a862b16e59b2e43b0c7d67bf6a26e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Font/Epilogue-Italic-VariableFont_wght SDF.asset using Guid(87a862b16e59b2e43b0c7d67bf6a26e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0f4c61f855ab1711d85a14f7e943190f') in 0.034385 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 11.508402 seconds.
+  path: Assets/Font/Epilogue-Italic SDF.asset
+  artifactKey: Guid(b5292d1e16da0144fb20f57044543654) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Font/Epilogue-Italic SDF.asset using Guid(b5292d1e16da0144fb20f57044543654) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '79a8883fc09cde4decd39fe4671120ab') in 0.038230 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 57.214288 seconds.
+  path: Assets/Font/Epilogue-LightItalic SDF.asset
+  artifactKey: Guid(57f211036932f9c48a9bed01ff60785d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Font/Epilogue-LightItalic SDF.asset using Guid(57f211036932f9c48a9bed01ff60785d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8415128eb6b8cc00bbf4ee2a5fb9e5c3') in 0.037776 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 7.782857 seconds.
+  path: Assets/Font/Epilogue-Medium SDF.asset
+  artifactKey: Guid(5b62931b83b584c479dfd10df30b0202) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Font/Epilogue-Medium SDF.asset using Guid(5b62931b83b584c479dfd10df30b0202) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ef003b2cf2ab3c8d2afbbb0c3f9d06f5') in 0.023654 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 8.367675 seconds.
+  path: Assets/Font/Epilogue-MediumItalic SDF.asset
+  artifactKey: Guid(6947ae7c08c5b99489dbc98d6818f2c1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Font/Epilogue-MediumItalic SDF.asset using Guid(6947ae7c08c5b99489dbc98d6818f2c1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5fceb818551303c437a6a215e03459ba') in 0.036895 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 7.602803 seconds.
+  path: Assets/Font/Epilogue-Regular SDF.asset
+  artifactKey: Guid(4f8d3ce47e1fc92439571962e796b4d2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Font/Epilogue-Regular SDF.asset using Guid(4f8d3ce47e1fc92439571962e796b4d2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1989999c58d6720b4c813487e095c083') in 0.024781 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 8.809159 seconds.
+  path: Assets/Font/Epilogue-SemiBold SDF.asset
+  artifactKey: Guid(4f60bbbd4ae0d764c8cebf08f0c36bf6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Font/Epilogue-SemiBold SDF.asset using Guid(4f60bbbd4ae0d764c8cebf08f0c36bf6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0afc0d5cd1f8fcfe22cc96fcdd986e78') in 0.030080 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 8.707486 seconds.
+  path: Assets/Font/Epilogue-SemiBoldItalic SDF.asset
+  artifactKey: Guid(bb06bbc6602ab9146b7e7da4bbd2d732) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Font/Epilogue-SemiBoldItalic SDF.asset using Guid(bb06bbc6602ab9146b7e7da4bbd2d732) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f8dfe7a1afb18dbe26c15e5ba02b7862') in 0.034309 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 9.817004 seconds.
+  path: Assets/Font/Epilogue-Thin SDF.asset
+  artifactKey: Guid(3d511d133a798bd459108a6545f0c301) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Font/Epilogue-Thin SDF.asset using Guid(3d511d133a798bd459108a6545f0c301) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '56bf29b6f9091384422ea8fde75c5ef5') in 0.038363 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 8.381794 seconds.
+  path: Assets/Font/Epilogue-ThinItalic SDF.asset
+  artifactKey: Guid(5f62949db3fc4824a948a8e6524f8102) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Font/Epilogue-ThinItalic SDF.asset using Guid(5f62949db3fc4824a948a8e6524f8102) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '601879c51d78828b8a6a67ee5618134a') in 0.032780 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 8.051459 seconds.
+  path: Assets/Font/Epilogue-VariableFont_wght SDF.asset
+  artifactKey: Guid(eed25501a58d5cf48940f02ee55d073e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Font/Epilogue-VariableFont_wght SDF.asset using Guid(eed25501a58d5cf48940f02ee55d073e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '971dae6d41becffbb68cd602fad59ef2') in 0.033748 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 126.390302 seconds.
+  path: Assets/Font/Epilogue-Black SDF.asset
+  artifactKey: Guid(7964c39f852c32c4385cec405f0532c3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Font/Epilogue-Black SDF.asset using Guid(7964c39f852c32c4385cec405f0532c3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fd1dd890d520045e8646cb76d9d4adac') in 0.042202 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Font/Epilogue-ThinItalic SDF.asset
+  artifactKey: Guid(5f62949db3fc4824a948a8e6524f8102) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Font/Epilogue-ThinItalic SDF.asset using Guid(5f62949db3fc4824a948a8e6524f8102) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0921293f7849e926804c33b1234d50ec') in 0.030808 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Font/Epilogue-ExtraBoldItalic SDF.asset
+  artifactKey: Guid(59798083fcce3e64580a9354336bbc64) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Font/Epilogue-ExtraBoldItalic SDF.asset using Guid(59798083fcce3e64580a9354336bbc64) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a0c0af510305edd719a16c89ee155eb6') in 0.046182 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000035 seconds.
+  path: Assets/Font/Epilogue-ExtraLight SDF.asset
+  artifactKey: Guid(2ccaba34f1e7a224cba8e8d33252186f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Font/Epilogue-ExtraLight SDF.asset using Guid(2ccaba34f1e7a224cba8e8d33252186f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '14e219720616f6f981e67a0e99629b31') in 0.047072 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000082 seconds.
+  path: Assets/Font/Epilogue-LightItalic SDF.asset
+  artifactKey: Guid(57f211036932f9c48a9bed01ff60785d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Font/Epilogue-LightItalic SDF.asset using Guid(57f211036932f9c48a9bed01ff60785d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f80b4e644981aa80a4d78c1cf9019e70') in 0.027065 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000038 seconds.
+  path: Assets/Font/Epilogue-BoldItalic SDF.asset
+  artifactKey: Guid(b2dea22f900ab904a8faf55a73a09142) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Font/Epilogue-BoldItalic SDF.asset using Guid(b2dea22f900ab904a8faf55a73a09142) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '869e569d1ed395c823f8e7d6c90a8a2c') in 0.024881 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Font/Epilogue-Thin SDF.asset
+  artifactKey: Guid(3d511d133a798bd459108a6545f0c301) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Font/Epilogue-Thin SDF.asset using Guid(3d511d133a798bd459108a6545f0c301) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '221dee3cb684a0b4ea74671fe59ea622') in 0.024934 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Font/Epilogue-ExtraLightItalic SDF.asset
+  artifactKey: Guid(f8f58987a9e5def4a9305a68c46a5be6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Font/Epilogue-ExtraLightItalic SDF.asset using Guid(f8f58987a9e5def4a9305a68c46a5be6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0b52de8ca2463c8f672f9dac8d695dfa') in 0.024361 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Font/Epilogue-VariableFont_wght SDF.asset
+  artifactKey: Guid(eed25501a58d5cf48940f02ee55d073e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Font/Epilogue-VariableFont_wght SDF.asset using Guid(eed25501a58d5cf48940f02ee55d073e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7d7cc994230f5a294c84aa6dde4ae7ea') in 0.025442 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000044 seconds.
+  path: Assets/Font/Epilogue-MediumItalic SDF.asset
+  artifactKey: Guid(6947ae7c08c5b99489dbc98d6818f2c1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Font/Epilogue-MediumItalic SDF.asset using Guid(6947ae7c08c5b99489dbc98d6818f2c1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '25b4d7bcb06e57d4c0d51dd62cce8ea9') in 0.023113 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000038 seconds.
+  path: Assets/Font/Epilogue-Italic SDF.asset
+  artifactKey: Guid(b5292d1e16da0144fb20f57044543654) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Font/Epilogue-Italic SDF.asset using Guid(b5292d1e16da0144fb20f57044543654) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2eb2a7639b059a062050283cb407f8cc') in 0.025388 seconds 
+Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
+AssetImportWorker is now disconnected from the server
+Process exiting
+Exiting without the bug reporter. Application will terminate with return code 0
