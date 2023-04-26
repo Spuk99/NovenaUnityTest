@@ -52,6 +52,7 @@ public class JSONReader : MonoBehaviour
     [SerializeField]
     private AudioSource audioSource;
 
+    private Slider slider;
 
     [System.Serializable]
     public class TranslatedContentsData
@@ -126,7 +127,6 @@ public class JSONReader : MonoBehaviour
     //Generate List buttons for page 2
     public void GenerateListButtons(int index)
     {
-        Debug.Log("Index je: " + index);
         int counter = 1;
         Topic[] topics = myJsonDataList.TranslatedContents[index].Topics;
         
@@ -143,7 +143,7 @@ public class JSONReader : MonoBehaviour
         backListButton.onClick.AddListener(() => DestroyObjects(contentList));
     }
 
-    //Destroy instantiated objects when changing panels
+    //Destroy instantiated objects when changing panels - for going from page 2 to page 1
     public void DestroyObjects(GameObject content)
     {
         Transform[] listChild = content.GetComponentsInChildren<Transform>();
@@ -158,9 +158,14 @@ public class JSONReader : MonoBehaviour
         TextMeshProUGUI[] texts = titleDetails.GetComponentsInChildren<TextMeshProUGUI>();
         texts[0].text = number;
         texts[1].text = top.Name;
+        detTextPanel.GetComponentInChildren<TextMeshProUGUI>().text = top.Details;
+        
         Media[] med = top.Media;
         Photo[] phot = { };
         string duration="";
+
+        slider = audioDetails.GetComponentInChildren<Slider>();
+
         //load audio from Media from Topic
         foreach (Media item in med)
         {
@@ -172,8 +177,10 @@ public class JSONReader : MonoBehaviour
                 double seconds = ts.Seconds;
                 duration = minutes.ToString() + ":" + seconds.ToString();
                 audioDetails.GetComponentInChildren<TextMeshProUGUI>().text = "00:00 / " +duration;
+                slider.maxValue = audioSource.clip.length;
                 audioSource.Play();
                 StartCoroutine(UpdateAudioTime(audioDetails.GetComponentInChildren<TextMeshProUGUI>(), duration));
+                
             }
             //load Gallery from Media from Topic
             else if (item.Name == "Gallery")
@@ -181,16 +188,12 @@ public class JSONReader : MonoBehaviour
                 phot = item.Photos;
             }
         }
-        //load details text
-        detTextPanel.GetComponentInChildren<TextMeshProUGUI>().text = top.Details;
 
-        //call method for loading images every 5 seconds
         StartCoroutine(LoadImages(phot));
-        
-        //setup buttons (back button and details button)
         backdetailsButton.onClick.AddListener(() => ResetEverything());
     }
 
+    //Update the proress bar of audio and text that shows the lenght of the audio
     IEnumerator UpdateAudioTime(TextMeshProUGUI text, string duration)
     {
         while (true)
@@ -200,12 +203,21 @@ public class JSONReader : MonoBehaviour
             double sec = ts.Seconds;
             string curDur = min.ToString() + ":" + sec.ToString();
             text.text = curDur + " / " + duration;
+            if (slider.value < audioSource.clip.length)
+            {
+                slider.value = (float)audioSource.time;
+            }
             yield return new WaitForSeconds(0.5f);
         }
         
     }
 
-    //Load images from Gallery
+    public void SkipAudio()
+    {
+        audioSource.time = slider.value;
+    }
+
+    //Load images from Gallery every 5s. After loading the last one it stops.
     IEnumerator LoadImages(Photo[] phot)
     {
         foreach (Photo item in phot)
@@ -235,6 +247,7 @@ public class JSONReader : MonoBehaviour
         }
     }
 
+    //On back button click reset everything and stop coroutines
     public void ResetEverything()
     {
         audioSource.Stop();
