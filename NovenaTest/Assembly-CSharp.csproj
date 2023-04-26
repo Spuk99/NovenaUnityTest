@@ -59,6 +59,7 @@
     <Compile Include="Assets\Scripts\MoveFile.cs" />
     <Compile Include="Assets\Scripts\JSONReader.cs" />
     <Compile Include="Assets\Scripts\Downloader.cs" />
+    <Compile Include="Assets\Scripts\SwitchPanel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

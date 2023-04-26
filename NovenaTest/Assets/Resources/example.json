@@ -57,7 +57,7 @@
 			"LanguageName": "English",
 			"Topics": [
 				{
-					"Name": "Topic 2",
+					"Name": "Topic 1",
 					"Media": [
 						{
 							"Name": "Gallery",
@@ -77,7 +77,53 @@
 							"FilePath": "/files/audio1.mp3"
 						}
 					],
-					"Details": "Details about topic 1. Lore ipsum..."
+					"Details": "Details about topic 1 in ENGLISH. Lore ipsum..."
+				},
+				{
+					"Name": "Topic 2",
+					"Media": [
+						{
+							"Name": "Gallery",
+							"Photos": [
+								{
+									"Path": "/files/test2.png",
+									"Name": "test2"
+								},
+								{								
+									"Path": "/files/test.png",
+									"Name": "test"
+								}
+							]
+						},
+						{
+							"Name": "Audio",
+							"FilePath": "/files/audio1.mp3"
+						}
+					],
+					"Details": "Details about topic 2 in ENGLISH. Lore ipsum..."
+				},
+				{
+					"Name": "Topic 3",
+					"Media": [
+						{
+							"Name": "Gallery",
+							"Photos": [
+								{
+									"Path": "/files/test2.png",
+									"Name": "test2"
+								},
+								{								
+									"Path": "/files/test.png",
+									"Name": "test"
+								}
+							]
+						},
+						{
+							"Name": "Audio",
+							"FilePath": "/files/audio1.mp3"
+						}
+					],
+					"Details": "Details about topic 3 in ENGLISH. Lore ipsum..."
 				}
 			]
 		},
@@ -106,7 +152,7 @@
 							"FilePath": "/files/audio1.mp3"
 						}
 					],
-					"Details": "Details about topic 1. Lore ipsum..."
+					"Details": "GERMAN: Details about topic 1. Lore ipsum germanum..."
 				}
 			]
 		}

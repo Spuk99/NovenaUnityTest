@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UI;
 using static UnityEditor.Progress;
@@ -45,9 +46,12 @@ public class JSONReader : MonoBehaviour
     private GameObject listPanel;
     [SerializeField]
     private GameObject detailsPanel;
+    [SerializeField]
+    private GameObject detTextPanel;
 
     [SerializeField]
     private AudioSource audioSource;
+
 
     [System.Serializable]
     public class TranslatedContentsData
@@ -125,14 +129,15 @@ public class JSONReader : MonoBehaviour
         Debug.Log("Index je: " + index);
         int counter = 1;
         Topic[] topics = myJsonDataList.TranslatedContents[index].Topics;
+        
         foreach (Topic item in topics)
         {
             GameObject obj = Instantiate(listButton, contentList.transform);
-            //obj.GetComponentInChildren<TextMeshProUGUI>().text = item.Name;
             obj.GetComponentsInChildren<TextMeshProUGUI>()[0].text = item.Name;
             obj.GetComponentsInChildren<TextMeshProUGUI>()[1].text = counter.ToString();
             obj.GetComponent<Button>().onClick.AddListener(() => ChangePanels(listPanel, detailsPanel));
-            obj.GetComponent<Button>().onClick.AddListener(() => SetUpDetails(item,counter-1));
+            int num = counter;
+            obj.GetComponent<Button>().onClick.AddListener(() => SetUpDetails(item,num.ToString()));
             counter++;
         }
         backListButton.onClick.AddListener(() => DestroyObjects(contentList));
@@ -148,10 +153,10 @@ public class JSONReader : MonoBehaviour
         }
     }
     
-    public void SetUpDetails(Topic top, int number)
+    public void SetUpDetails(Topic top, string number)
     {
         TextMeshProUGUI[] texts = titleDetails.GetComponentsInChildren<TextMeshProUGUI>();
-        texts[0].text = number.ToString();
+        texts[0].text = number;
         texts[1].text = top.Name;
         Media[] med = top.Media;
         Photo[] phot = { };
@@ -176,8 +181,13 @@ public class JSONReader : MonoBehaviour
                 phot = item.Photos;
             }
         }
+        //load details text
+        detTextPanel.GetComponentInChildren<TextMeshProUGUI>().text = top.Details;
+
         //call method for loading images every 5 seconds
         StartCoroutine(LoadImages(phot));
+        
+        //setup buttons (back button and details button)
         backdetailsButton.onClick.AddListener(() => ResetEverything());
     }
 
@@ -230,6 +240,7 @@ public class JSONReader : MonoBehaviour
         audioSource.Stop();
         playImage.gameObject.SetActive(false);
         stopImage.gameObject.SetActive(true);
+        detTextPanel.SetActive(false);
         StopAllCoroutines();
     }
 }
