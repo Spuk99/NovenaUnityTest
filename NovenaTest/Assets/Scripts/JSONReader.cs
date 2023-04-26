@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -8,7 +9,7 @@ using static UnityEditor.Progress;
 public class JSONReader : MonoBehaviour
 {
     [SerializeField]
-    private TextAsset textJSON;
+    private TextAsset textJSON; //load this JSON file from START()
 
     [SerializeField]
     private GameObject languageButton;
@@ -26,11 +27,27 @@ public class JSONReader : MonoBehaviour
     private GameObject contentList;
 
     [SerializeField]
+    private GameObject titleDetails;
+    [SerializeField]
+    private GameObject audioDetails;
+    [SerializeField]
+    private Image loadImage;
+    [SerializeField]
+    private GameObject playStopButton;
+    [SerializeField]
+    private Image playImage;
+    [SerializeField]
+    private Image stopImage;
+
+    [SerializeField]
     private GameObject languagePanel;
     [SerializeField]
     private GameObject listPanel;
     [SerializeField]
     private GameObject detailsPanel;
+
+    [SerializeField]
+    private AudioSource audioSource;
 
     [System.Serializable]
     public class TranslatedContentsData
@@ -44,6 +61,7 @@ public class JSONReader : MonoBehaviour
     {
         public string Name;
         public Media[] Media;
+        public string Details;
     }
     [System.Serializable]
     public class Media
@@ -73,6 +91,7 @@ public class JSONReader : MonoBehaviour
         myJsonDataList = JsonUtility.FromJson<JsonDataList>(textJSON.text);
         //call method for generating language buttons
         GenerateLanguageButton();
+        playStopButton.GetComponent<Button>().onClick.AddListener(PlayStopAudio);
     }
 
     // Update is called once per frame
@@ -81,6 +100,7 @@ public class JSONReader : MonoBehaviour
         
     }
 
+    //Generate Language buttons for page 1
     public void GenerateLanguageButton()
     {
         foreach(TranslatedContentsData item in myJsonDataList.TranslatedContents)
@@ -92,13 +112,14 @@ public class JSONReader : MonoBehaviour
         }
     }
 
-    //CFhangeing betwwen panels - used for all generated buttons
+    //Changeing betwwen panels - used for all generated buttons
     void ChangePanels(GameObject current, GameObject next)
     {
         current.SetActive(false);
         next.SetActive(true);
     }
-
+    
+    //Generate List buttons for page 2
     public void GenerateListButtons(int index)
     {
         Debug.Log("Index je: " + index);
@@ -111,17 +132,104 @@ public class JSONReader : MonoBehaviour
             obj.GetComponentsInChildren<TextMeshProUGUI>()[0].text = item.Name;
             obj.GetComponentsInChildren<TextMeshProUGUI>()[1].text = counter.ToString();
             obj.GetComponent<Button>().onClick.AddListener(() => ChangePanels(listPanel, detailsPanel));
+            obj.GetComponent<Button>().onClick.AddListener(() => SetUpDetails(item,counter-1));
             counter++;
         }
         backListButton.onClick.AddListener(() => DestroyObjects(contentList));
     }
 
+    //Destroy instantiated objects when changing panels
     public void DestroyObjects(GameObject content)
     {
         Transform[] listChild = content.GetComponentsInChildren<Transform>();
         for(int i=1; i<listChild.Length; i++)
         {
-            Object.Destroy(listChild[i].gameObject);
+            UnityEngine.Object.Destroy(listChild[i].gameObject);
         }
+    }
+    
+    public void SetUpDetails(Topic top, int number)
+    {
+        TextMeshProUGUI[] texts = titleDetails.GetComponentsInChildren<TextMeshProUGUI>();
+        texts[0].text = number.ToString();
+        texts[1].text = top.Name;
+        Media[] med = top.Media;
+        Photo[] phot = { };
+        string duration="";
+        //load audio from Media from Topic
+        foreach (Media item in med)
+        {
+            if (item.Name == "Audio")
+            {
+                audioSource.clip = Resources.Load<AudioClip>(item.FilePath.TrimStart('/').TrimEnd(".mp3".ToCharArray()));
+                TimeSpan ts = TimeSpan.FromSeconds(audioSource.clip.length);
+                double minutes = ts.Minutes;
+                double seconds = ts.Seconds;
+                duration = minutes.ToString() + ":" + seconds.ToString();
+                audioDetails.GetComponentInChildren<TextMeshProUGUI>().text = "00:00 / " +duration;
+                audioSource.Play();
+                StartCoroutine(UpdateAudioTime(audioDetails.GetComponentInChildren<TextMeshProUGUI>(), duration));
+            }
+            //load Gallery from Media from Topic
+            else if (item.Name == "Gallery")
+            {
+                phot = item.Photos;
+            }
+        }
+        //call method for loading images every 5 seconds
+        StartCoroutine(LoadImages(phot));
+        backdetailsButton.onClick.AddListener(() => ResetEverything());
+    }
+
+    IEnumerator UpdateAudioTime(TextMeshProUGUI text, string duration)
+    {
+        while (true)
+        {
+            TimeSpan ts = TimeSpan.FromSeconds(audioSource.time);
+            double min = ts.Minutes;
+            double sec = ts.Seconds;
+            string curDur = min.ToString() + ":" + sec.ToString();
+            text.text = curDur + " / " + duration;
+            yield return new WaitForSeconds(0.5f);
+        }
+        
+    }
+
+    //Load images from Gallery
+    IEnumerator LoadImages(Photo[] phot)
+    {
+        foreach (Photo item in phot)
+        {
+            loadImage.sprite = Resources.Load<Sprite>(item.Path.TrimStart('/').TrimEnd(".png".ToCharArray()));
+            Debug.Log("Ovo je slika: " + item.Path.TrimEnd(".png".ToCharArray()));
+            yield return new WaitForSeconds(5);
+        }
+    }
+
+    //Play Stop audio on click 
+    public void PlayStopAudio()
+    {
+        if (audioSource.isPlaying)
+        {
+            audioSource.Pause();
+            playImage.gameObject.SetActive(true);
+            stopImage.gameObject.SetActive(false);
+            Debug.Log("Pause");
+        }
+        else
+        {
+            audioSource.Play();
+            playImage.gameObject.SetActive(false);
+            stopImage.gameObject.SetActive(true);
+            Debug.Log("Play");
+        }
+    }
+
+    public void ResetEverything()
+    {
+        audioSource.Stop();
+        playImage.gameObject.SetActive(false);
+        stopImage.gameObject.SetActive(true);
+        StopAllCoroutines();
     }
 }

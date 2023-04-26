@@ -24,7 +24,8 @@
 							"Name": "Audio",
 							"FilePath": "/files/audio1.mp3"
 						}
-					]
+					],
+					"Details": "Details about topic 1. Lore ipsum..."
 				},
 				{
 					"Name": "Topic 2",
@@ -46,7 +47,8 @@
 							"Name": "Audio",
 							"FilePath": "/files/audio1.mp3"
 						}
-					]
+					],
+					"Details": "Details about topic 2. Lore ipsum..."
 				}
 			]
 		},
@@ -74,7 +76,8 @@
 							"Name": "Audio",
 							"FilePath": "/files/audio1.mp3"
 						}
-					]
+					],
+					"Details": "Details about topic 1. Lore ipsum..."
 				}
 			]
 		},
@@ -102,7 +105,8 @@
 							"Name": "Audio",
 							"FilePath": "/files/audio1.mp3"
 						}
-					]
+					],
+					"Details": "Details about topic 1. Lore ipsum..."
 				}
 			]
 		}
