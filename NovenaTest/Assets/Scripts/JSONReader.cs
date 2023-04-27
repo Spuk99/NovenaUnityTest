@@ -1,11 +1,8 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
-using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEditor.Progress;
 
 public class JSONReader : MonoBehaviour
 {
@@ -212,11 +209,6 @@ public class JSONReader : MonoBehaviour
         
     }
 
-    public void SkipAudio()
-    {
-        audioSource.time = slider.value;
-    }
-
     //Load images from Gallery every 5s. After loading the last one it stops.
     IEnumerator LoadImages(Photo[] phot)
     {
@@ -251,6 +243,8 @@ public class JSONReader : MonoBehaviour
     public void ResetEverything()
     {
         audioSource.Stop();
+        audioSource.clip = null;
+        audioSource.time = 0;
         playImage.gameObject.SetActive(false);
         stopImage.gameObject.SetActive(true);
         detTextPanel.SetActive(false);

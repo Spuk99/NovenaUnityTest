@@ -341,6 +341,7 @@
 "Assets/Scripts/Downloader.cs"
 "Assets/Scripts/JSONReader.cs"
 "Assets/Scripts/MoveFile.cs"
+"Assets/Scripts/SliderEvent.cs"
 "Assets/Scripts/SwitchPanel.cs"
 -langversion:9.0
 

@@ -18,8 +18,9 @@ public class Downloader : MonoBehaviour
     {
         Debug.Log("Download");
         //use UnityWebRequest for downloading
-        UnityWebRequest www = UnityWebRequest.Get("https://github.com/Spuk99/tester.git");
+        UnityWebRequest www = UnityWebRequest.Get("https://github.com/Spuk99/tester/blob/main/example.json");
         yield return www.SendWebRequest();
+        Debug.Log(www.downloadHandler.text);
         //copy nativeData from www.downloadHandler to Application.persistentDataPath
         System.IO.File.WriteAllBytes(Application.persistentDataPath + "/example.json", www.downloadHandler.data);
     }
