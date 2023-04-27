@@ -2,7 +2,6 @@ ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
     - JSONReader
-    - MoveFile
     - SliderEvent
     - SwitchPanel
     Unity.Rider.Editor.dll:
@@ -122,8 +121,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 2018}
     - Class: 114
       Script: {instanceID: 2338}
-    - Class: 114
-      Script: {instanceID: 2346}
     - Class: 114
       Script: {instanceID: 2494}
     - Class: 114
@@ -632,4 +629,4 @@ ScriptsOnlyBuild:
   platform: 13
   scenePathNames:
   - Assets/Scenes/MainScene.unity
-  playerPath: D:/KikiD/PrijaveZaPosao/Zadatci/Novena/Builds/NovenaTest7.apk
+  playerPath: D:/KikiD/PrijaveZaPosao/Zadatci/Novena/Builds/NovenaTest23.apk

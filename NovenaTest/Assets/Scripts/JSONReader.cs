@@ -1,7 +1,10 @@
 using System;
 using System.Collections;
+using System.IO;
+using System.Text;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Networking;
 using UnityEngine.UI;
 
 public class JSONReader : MonoBehaviour
@@ -87,10 +90,49 @@ public class JSONReader : MonoBehaviour
 
     public JsonDataList myJsonDataList = new JsonDataList();
 
+
+    private void Awake()
+    {
+        StartCoroutine(GetRequest(Path.Combine(Application.streamingAssetsPath, "example.json")));
+        
+        byte[] jsonDataAsBytes = null;
+        if (File.Exists(Application.persistentDataPath + "/example.json"))
+            jsonDataAsBytes = File.ReadAllBytes(Application.persistentDataPath + "/example.json");
+        
+        string jsonData = Encoding.ASCII.GetString(jsonDataAsBytes);
+
+        myJsonDataList = JsonUtility.FromJson<JsonDataList>(jsonData);
+
+        string destination = Application.persistentDataPath;
+        foreach (TranslatedContentsData item in myJsonDataList.TranslatedContents)
+        {
+            Topic[] topics = item.Topics;
+            foreach (Topic it in topics)
+            {
+                Media[] media = it.Media;
+                foreach (Media i in media)
+                {
+                    if (i.Name == "Audio")
+                    {
+                        StartCoroutine(GetFile(Path.Combine(Application.streamingAssetsPath, i.FilePath), destination, i.FilePath));
+                    }
+                    else
+                    {
+                        Photo[] photos = i.Photos;
+                        foreach (Photo p in photos)
+                        {
+                            StartCoroutine(GetFile(Path.Combine(Application.streamingAssetsPath, p.Path), destination, p.Path));
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        myJsonDataList = JsonUtility.FromJson<JsonDataList>(textJSON.text);
         //call method for generating language buttons
         GenerateLanguageButton();
         playStopButton.GetComponent<Button>().onClick.AddListener(PlayStopAudio);
@@ -101,6 +143,20 @@ public class JSONReader : MonoBehaviour
     {
         
     }
+    IEnumerator GetRequest(string path)
+    {
+        WWW loadDB = new WWW(path);
+        yield return loadDB.text;
+        File.WriteAllBytes(Application.persistentDataPath + "/example.json", loadDB.bytes);
+    }
+
+    IEnumerator GetFile(string path, string destination, string orgPath)
+    {
+        WWW loadDB = new WWW(path);
+        yield return loadDB.bytes;
+        File.WriteAllBytes(destination + "/"+ orgPath, loadDB.bytes);
+    }
+
 
     //Generate Language buttons for page 1
     public void GenerateLanguageButton()
@@ -168,7 +224,10 @@ public class JSONReader : MonoBehaviour
         {
             if (item.Name == "Audio")
             {
-                audioSource.clip = Resources.Load<AudioClip>(item.FilePath.TrimStart('/').TrimEnd(".mp3".ToCharArray()));
+                //audioSource.clip = Resources.Load<AudioClip>(item.FilePath.TrimEnd(".mp3".ToCharArray()));
+
+                StartCoroutine(LoadAudioUrl(Path.Combine(Application.streamingAssetsPath, item.FilePath)));
+                
                 TimeSpan ts = TimeSpan.FromSeconds(audioSource.clip.length);
                 double minutes = ts.Minutes;
                 double seconds = ts.Seconds;
@@ -188,6 +247,21 @@ public class JSONReader : MonoBehaviour
 
         StartCoroutine(LoadImages(phot));
         backdetailsButton.onClick.AddListener(() => ResetEverything());
+    }
+
+    IEnumerator LoadAudioUrl(string url)
+    {
+        UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip(url, AudioType.WAV);
+        yield return www.Send();
+        if (www.isError)
+        {
+            Debug.LogWarning("Audio error:" + www.error);
+        }
+        else
+        {
+            AudioClip audioClip = ((DownloadHandlerAudioClip)www.downloadHandler).audioClip;
+            audioSource.clip = audioClip;
+        }
     }
 
     //Update the proress bar of audio and text that shows the lenght of the audio
@@ -214,7 +288,7 @@ public class JSONReader : MonoBehaviour
     {
         foreach (Photo item in phot)
         {
-            loadImage.sprite = Resources.Load<Sprite>(item.Path.TrimStart('/').TrimEnd(".png".ToCharArray()));
+            loadImage.sprite = Resources.Load<Sprite>(item.Path.TrimEnd(".png".ToCharArray()));
             Debug.Log("Ovo je slika: " + item.Path.TrimEnd(".png".ToCharArray()));
             yield return new WaitForSeconds(5);
         }
