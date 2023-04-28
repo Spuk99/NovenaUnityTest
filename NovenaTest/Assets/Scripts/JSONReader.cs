@@ -224,9 +224,9 @@ public class JSONReader : MonoBehaviour
         {
             if (item.Name == "Audio")
             {
-                //audioSource.clip = Resources.Load<AudioClip>(item.FilePath.TrimEnd(".mp3".ToCharArray()));
+                audioSource.clip = Resources.Load<AudioClip>(item.FilePath.TrimEnd(".mp3".ToCharArray()));
 
-                StartCoroutine(LoadAudioUrl(Path.Combine(Application.streamingAssetsPath, item.FilePath)));
+                //StartCoroutine(LoadAudioUrl(Path.Combine(Application.streamingAssetsPath, item.FilePath)));
                 
                 TimeSpan ts = TimeSpan.FromSeconds(audioSource.clip.length);
                 double minutes = ts.Minutes;
@@ -244,24 +244,27 @@ public class JSONReader : MonoBehaviour
                 phot = item.Photos;
             }
         }
-
-        StartCoroutine(LoadImages(phot));
+        
+        StartCoroutine(LoadGallery(phot));
         backdetailsButton.onClick.AddListener(() => ResetEverything());
     }
-
+    
     IEnumerator LoadAudioUrl(string url)
     {
-        UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip(url, AudioType.WAV);
-        yield return www.Send();
-        if (www.isError)
+        UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip(url, AudioType.MPEG);
+        yield return www.SendWebRequest();
+        if (www.result == UnityWebRequest.Result.ConnectionError)
         {
             Debug.LogWarning("Audio error:" + www.error);
         }
         else
         {
             AudioClip audioClip = ((DownloadHandlerAudioClip)www.downloadHandler).audioClip;
+            Debug.Log("error?" + audioClip.name);
             audioSource.clip = audioClip;
         }
+        //yield return wait for 1 second
+        yield return new WaitForSeconds(1);
     }
 
     //Update the proress bar of audio and text that shows the lenght of the audio
@@ -284,14 +287,38 @@ public class JSONReader : MonoBehaviour
     }
 
     //Load images from Gallery every 5s. After loading the last one it stops.
-    IEnumerator LoadImages(Photo[] phot)
+    IEnumerator LoadGallery(Photo[] phot)
     {
+        string path = Application.persistentDataPath + "/";
         foreach (Photo item in phot)
         {
-            loadImage.sprite = Resources.Load<Sprite>(item.Path.TrimEnd(".png".ToCharArray()));
-            Debug.Log("Ovo je slika: " + item.Path.TrimEnd(".png".ToCharArray()));
+            LoadOfImages(path+"/"+item.Path);
             yield return new WaitForSeconds(5);
         }
+    }
+    public void LoadOfImages(string uri)
+    {
+        StartCoroutine(LoadSpriteUrl(uri));
+    }
+
+    IEnumerator LoadSpriteUrl(string url)
+    {
+        UnityWebRequest www = UnityWebRequestTexture.GetTexture(url);
+
+        yield return www.SendWebRequest();
+
+        if (www.result == UnityWebRequest.Result.ConnectionError)
+        {
+            Debug.LogWarning("Texture error:" + www.error);
+        }
+        else
+        {
+            Texture2D texture = ((DownloadHandlerTexture)www.downloadHandler).texture;
+            Debug.Log("error" + texture.name);
+            Sprite sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), Vector2.zero);
+            loadImage.sprite = sprite;
+        }
+        yield return new WaitForSeconds(5);
     }
 
     //Play Stop audio on click 
