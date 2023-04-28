@@ -338,9 +338,7 @@
 -r:"Library/Bee/artifacts/1300b0aE.dag/Unity.VSCode.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1300b0aE.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/1300b0aE.dag/UnityEngine.UI.ref.dll"
-"Assets/Scripts/Downloader.cs"
 "Assets/Scripts/JSONReader.cs"
-"Assets/Scripts/MoveFile.cs"
 "Assets/Scripts/SliderEvent.cs"
 "Assets/Scripts/SwitchPanel.cs"
 -langversion:9.0

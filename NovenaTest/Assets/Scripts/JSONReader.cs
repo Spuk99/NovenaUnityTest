@@ -94,15 +94,40 @@ public class JSONReader : MonoBehaviour
     private void Awake()
     {
         StartCoroutine(GetRequest(Path.Combine(Application.streamingAssetsPath, "example.json")));
-        
-        byte[] jsonDataAsBytes = null;
-        if (File.Exists(Application.persistentDataPath + "/example.json"))
-            jsonDataAsBytes = File.ReadAllBytes(Application.persistentDataPath + "/example.json");
-        
-        string jsonData = Encoding.ASCII.GetString(jsonDataAsBytes);
+        //myJsonDataList = JsonUtility.FromJson<JsonDataList>(textJSON.text);    
+    }
 
-        myJsonDataList = JsonUtility.FromJson<JsonDataList>(jsonData);
+    // Start is called before the first frame update
+    void Start()
+    {
+        playStopButton.GetComponent<Button>().onClick.AddListener(PlayStopAudio);
+    }
 
+    //Load JSON file into Application.persistentDaatPath. load from there into json parser and start generating buttons
+    IEnumerator GetRequest(string path)
+    {
+        WWW loadDB = new WWW(path);
+        yield return loadDB.text;
+        File.WriteAllBytes(Application.persistentDataPath + "/example.json", loadDB.bytes);
+        yield return StartCoroutine(LoadingJson());
+    }
+
+    IEnumerator LoadingJson()
+    {
+        string path = Application.persistentDataPath + "/example.json";
+        if (File.Exists(path))
+        {
+            byte[] jsonData = File.ReadAllBytes(path);
+            string jsonStr = Encoding.ASCII.GetString(jsonData);
+            myJsonDataList = JsonUtility.FromJson<JsonDataList>(jsonStr);
+        }
+        GenerateLanguageButton();
+        yield return StartCoroutine(GetEverythingElse());
+    }
+
+    //Load media to Application.persistentDataPath
+    IEnumerator GetEverythingElse()
+    {
         string destination = Application.persistentDataPath;
         foreach (TranslatedContentsData item in myJsonDataList.TranslatedContents)
         {
@@ -126,30 +151,9 @@ public class JSONReader : MonoBehaviour
                     }
                 }
             }
-
         }
+        yield return null;
     }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        //call method for generating language buttons
-        GenerateLanguageButton();
-        playStopButton.GetComponent<Button>().onClick.AddListener(PlayStopAudio);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    IEnumerator GetRequest(string path)
-    {
-        WWW loadDB = new WWW(path);
-        yield return loadDB.text;
-        File.WriteAllBytes(Application.persistentDataPath + "/example.json", loadDB.bytes);
-    }
-
     IEnumerator GetFile(string path, string destination, string orgPath)
     {
         WWW loadDB = new WWW(path);
@@ -224,19 +228,7 @@ public class JSONReader : MonoBehaviour
         {
             if (item.Name == "Audio")
             {
-                audioSource.clip = Resources.Load<AudioClip>(item.FilePath.TrimEnd(".mp3".ToCharArray()));
-
-                //StartCoroutine(LoadAudioUrl(Path.Combine(Application.streamingAssetsPath, item.FilePath)));
-                
-                TimeSpan ts = TimeSpan.FromSeconds(audioSource.clip.length);
-                double minutes = ts.Minutes;
-                double seconds = ts.Seconds;
-                duration = minutes.ToString() + ":" + seconds.ToString();
-                audioDetails.GetComponentInChildren<TextMeshProUGUI>().text = "00:00 / " +duration;
-                slider.maxValue = audioSource.clip.length;
-                audioSource.Play();
-                StartCoroutine(UpdateAudioTime(audioDetails.GetComponentInChildren<TextMeshProUGUI>(), duration));
-                
+                StartCoroutine(LoadAudioUrl(Path.Combine(Application.persistentDataPath, item.FilePath), duration)); 
             }
             //load Gallery from Media from Topic
             else if (item.Name == "Gallery")
@@ -248,10 +240,11 @@ public class JSONReader : MonoBehaviour
         StartCoroutine(LoadGallery(phot));
         backdetailsButton.onClick.AddListener(() => ResetEverything());
     }
-    
-    IEnumerator LoadAudioUrl(string url)
+
+    //Load audio from Application.persistentDataPath  + Update the proress bar of audio and text that shows the lenght of the audio
+    IEnumerator LoadAudioUrl(string url, string duration)
     {
-        UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip(url, AudioType.MPEG);
+        UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip("file:///" + url, AudioType.MPEG);
         yield return www.SendWebRequest();
         if (www.result == UnityWebRequest.Result.ConnectionError)
         {
@@ -260,14 +253,18 @@ public class JSONReader : MonoBehaviour
         else
         {
             AudioClip audioClip = ((DownloadHandlerAudioClip)www.downloadHandler).audioClip;
-            Debug.Log("error?" + audioClip.name);
+            Debug.Log(audioClip.name);
             audioSource.clip = audioClip;
+            TimeSpan ts = TimeSpan.FromSeconds(audioSource.clip.length);
+            double minutes = ts.Minutes;
+            double seconds = ts.Seconds;
+            duration = minutes.ToString() + ":" + seconds.ToString();
+            audioDetails.GetComponentInChildren<TextMeshProUGUI>().text = "00:00 / " + duration;
+            slider.maxValue = audioSource.clip.length;
+            audioSource.Play();
         }
-        //yield return wait for 1 second
-        yield return new WaitForSeconds(1);
+        yield return StartCoroutine(UpdateAudioTime(audioDetails.GetComponentInChildren<TextMeshProUGUI>(), duration));
     }
-
-    //Update the proress bar of audio and text that shows the lenght of the audio
     IEnumerator UpdateAudioTime(TextMeshProUGUI text, string duration)
     {
         while (true)
@@ -286,21 +283,20 @@ public class JSONReader : MonoBehaviour
         
     }
 
-    //Load images from Gallery every 5s. After loading the last one it stops.
+    //Load images from Application.persistentDataPath for the Gallery. Call a function to call a coroutine that loads the image and then wait 5 seconds in the first coroutine
     IEnumerator LoadGallery(Photo[] phot)
     {
-        string path = Application.persistentDataPath + "/";
+        string path = "file:///" + Application.persistentDataPath + "/";
         foreach (Photo item in phot)
         {
-            LoadOfImages(path+"/"+item.Path);
-            yield return new WaitForSeconds(5);
+            LoadOfImages(path+item.Path);
+            yield return new WaitForSeconds(6);
         }
     }
     public void LoadOfImages(string uri)
     {
         StartCoroutine(LoadSpriteUrl(uri));
     }
-
     IEnumerator LoadSpriteUrl(string url)
     {
         UnityWebRequest www = UnityWebRequestTexture.GetTexture(url);
@@ -314,11 +310,9 @@ public class JSONReader : MonoBehaviour
         else
         {
             Texture2D texture = ((DownloadHandlerTexture)www.downloadHandler).texture;
-            Debug.Log("error" + texture.name);
             Sprite sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), Vector2.zero);
             loadImage.sprite = sprite;
         }
-        yield return new WaitForSeconds(5);
     }
 
     //Play Stop audio on click 
@@ -329,14 +323,12 @@ public class JSONReader : MonoBehaviour
             audioSource.Pause();
             playImage.gameObject.SetActive(true);
             stopImage.gameObject.SetActive(false);
-            Debug.Log("Pause");
         }
         else
         {
             audioSource.Play();
             playImage.gameObject.SetActive(false);
             stopImage.gameObject.SetActive(true);
-            Debug.Log("Play");
         }
     }
 
