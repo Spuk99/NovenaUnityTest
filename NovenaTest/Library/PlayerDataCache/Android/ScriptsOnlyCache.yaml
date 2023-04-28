@@ -101,8 +101,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 82
       Script: {instanceID: 0}
-    - Class: 83
-      Script: {instanceID: 0}
     - Class: 89
       Script: {instanceID: 0}
     - Class: 104
@@ -122,31 +120,31 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 2338}
     - Class: 114
-      Script: {instanceID: 2494}
+      Script: {instanceID: 2492}
     - Class: 114
-      Script: {instanceID: 2508}
+      Script: {instanceID: 2506}
     - Class: 114
-      Script: {instanceID: 2716}
+      Script: {instanceID: 2714}
     - Class: 114
-      Script: {instanceID: 2800}
+      Script: {instanceID: 2798}
     - Class: 114
-      Script: {instanceID: 2848}
+      Script: {instanceID: 2846}
     - Class: 114
-      Script: {instanceID: 2980}
+      Script: {instanceID: 2978}
     - Class: 114
-      Script: {instanceID: 3032}
+      Script: {instanceID: 3030}
     - Class: 114
-      Script: {instanceID: 3212}
+      Script: {instanceID: 3210}
     - Class: 114
-      Script: {instanceID: 3250}
+      Script: {instanceID: 3248}
     - Class: 114
-      Script: {instanceID: 3526}
+      Script: {instanceID: 3522}
     - Class: 114
-      Script: {instanceID: 3574}
+      Script: {instanceID: 3570}
     - Class: 114
-      Script: {instanceID: 3724}
+      Script: {instanceID: 3720}
     - Class: 114
-      Script: {instanceID: 3762}
+      Script: {instanceID: 3758}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -376,7 +374,7 @@ ScriptsOnlyBuild:
     className: PlaymodeTestsController
   - hash:
       serializedVersion: 2
-      Hash: 66903c38040a20e4ed27c8d9bd466476
+      Hash: d3fe58c0c1f02fe822d0b0fc7602d96c
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: JSONReader
@@ -617,4 +615,4 @@ ScriptsOnlyBuild:
   platform: 13
   scenePathNames:
   - Assets/Scenes/MainScene.unity
-  playerPath: D:/KikiD/PrijaveZaPosao/Zadatci/Novena/Builds/NovenaTest31.apk
+  playerPath: D:/KikiD/PrijaveZaPosao/Zadatci/Novena/Builds/NovenaTest33-final.apk

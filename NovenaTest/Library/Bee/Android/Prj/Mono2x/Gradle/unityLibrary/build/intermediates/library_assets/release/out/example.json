@@ -45,7 +45,7 @@
 						},
 						{
 							"Name": "Audio",
-							"FilePath": "audio1.mp3"
+							"FilePath": "audio2.mp3"
 						}
 					],
 					"Details": "Details about topic 2. Lore ipsum..."
@@ -97,7 +97,7 @@
 						},
 						{
 							"Name": "Audio",
-							"FilePath": "audio1.mp3"
+							"FilePath": "audio2.mp3"
 						}
 					],
 					"Details": "Details about topic 2 in ENGLISH. Lore ipsum..."
@@ -120,7 +120,7 @@
 						},
 						{
 							"Name": "Audio",
-							"FilePath": "audio1.mp3"
+							"FilePath": "audio3.mp3"
 						}
 					],
 					"Details": "Details about topic 3 in ENGLISH. Lore ipsum..."
@@ -149,7 +149,7 @@
 						},
 						{
 							"Name": "Audio",
-							"FilePath": "audio1.mp3"
+							"FilePath": "audio3.mp3"
 						}
 					],
 					"Details": "GERMAN: Details about topic 1. Lore ipsum germanum..."

@@ -52,15 +52,15 @@
 31            android:name="com.unity3d.player.UnityPlayerActivity"
 31-->D:\KikiD\PrijaveZaPosao\Zadatci\Novena\Projekt\NovenaUnityTest\NovenaTest\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\src\main\AndroidManifest.xml:4:15-68
 32            android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale|layoutDirection|density"
-32-->D:\KikiD\PrijaveZaPosao\Zadatci\Novena\Projekt\NovenaUnityTest\NovenaTest\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\src\main\AndroidManifest.xml:4:182-363
+32-->D:\KikiD\PrijaveZaPosao\Zadatci\Novena\Projekt\NovenaUnityTest\NovenaTest\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\src\main\AndroidManifest.xml:4:180-361
 33            android:hardwareAccelerated="false"
-33-->D:\KikiD\PrijaveZaPosao\Zadatci\Novena\Projekt\NovenaUnityTest\NovenaTest\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\src\main\AndroidManifest.xml:4:399-434
+33-->D:\KikiD\PrijaveZaPosao\Zadatci\Novena\Projekt\NovenaUnityTest\NovenaTest\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\src\main\AndroidManifest.xml:4:397-432
 34            android:launchMode="singleTask"
-34-->D:\KikiD\PrijaveZaPosao\Zadatci\Novena\Projekt\NovenaUnityTest\NovenaTest\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\src\main\AndroidManifest.xml:4:150-181
+34-->D:\KikiD\PrijaveZaPosao\Zadatci\Novena\Projekt\NovenaUnityTest\NovenaTest\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\src\main\AndroidManifest.xml:4:148-179
 35            android:resizeableActivity="false"
-35-->D:\KikiD\PrijaveZaPosao\Zadatci\Novena\Projekt\NovenaUnityTest\NovenaTest\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\src\main\AndroidManifest.xml:4:364-398
-36            android:screenOrientation="fullSensor"
-36-->D:\KikiD\PrijaveZaPosao\Zadatci\Novena\Projekt\NovenaUnityTest\NovenaTest\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\src\main\AndroidManifest.xml:4:111-149
+35-->D:\KikiD\PrijaveZaPosao\Zadatci\Novena\Projekt\NovenaUnityTest\NovenaTest\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\src\main\AndroidManifest.xml:4:362-396
+36            android:screenOrientation="portrait"
+36-->D:\KikiD\PrijaveZaPosao\Zadatci\Novena\Projekt\NovenaUnityTest\NovenaTest\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\src\main\AndroidManifest.xml:4:111-147
 37            android:theme="@style/UnityThemeSelector" >
 37-->D:\KikiD\PrijaveZaPosao\Zadatci\Novena\Projekt\NovenaUnityTest\NovenaTest\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\src\main\AndroidManifest.xml:4:69-110
 38            <intent-filter>

@@ -77,8 +77,8 @@
 44-->[:unityLibrary] D:\KikiD\PrijaveZaPosao\Zadatci\Novena\Projekt\NovenaUnityTest\NovenaTest\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\build\intermediates\library_manifest\release\AndroidManifest.xml:34:13-44
 45            android:resizeableActivity="false"
 45-->[:unityLibrary] D:\KikiD\PrijaveZaPosao\Zadatci\Novena\Projekt\NovenaUnityTest\NovenaTest\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\build\intermediates\library_manifest\release\AndroidManifest.xml:35:13-47
-46            android:screenOrientation="fullSensor"
-46-->[:unityLibrary] D:\KikiD\PrijaveZaPosao\Zadatci\Novena\Projekt\NovenaUnityTest\NovenaTest\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\build\intermediates\library_manifest\release\AndroidManifest.xml:36:13-51
+46            android:screenOrientation="portrait"
+46-->[:unityLibrary] D:\KikiD\PrijaveZaPosao\Zadatci\Novena\Projekt\NovenaUnityTest\NovenaTest\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\build\intermediates\library_manifest\release\AndroidManifest.xml:36:13-49
 47            android:theme="@style/UnityThemeSelector" >
 47-->[:unityLibrary] D:\KikiD\PrijaveZaPosao\Zadatci\Novena\Projekt\NovenaUnityTest\NovenaTest\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\build\intermediates\library_manifest\release\AndroidManifest.xml:37:13-54
 48            <intent-filter>

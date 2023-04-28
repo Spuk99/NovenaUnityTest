@@ -10,50 +10,48 @@ using UnityEngine.UI;
 public class JSONReader : MonoBehaviour
 {
     [SerializeField]
-    private TextAsset textJSON; //load this JSON file from START()
+    private GameObject languageButton; //prefab of langageButton for page 1
+    [SerializeField]
+    private GameObject listButton; // prefab of listButton for page 2
 
     [SerializeField]
-    private GameObject languageButton;
+    private Button backListButton; // button to go back to page 1 
     [SerializeField]
-    private GameObject listButton;
+    private Button backdetailsButton; // button to go back to page 2
 
     [SerializeField]
-    private Button backListButton;
+    private GameObject contentLanguage; // content of the scrollview for page 1
     [SerializeField]
-    private Button backdetailsButton;
+    private GameObject contentList; // content of the scrollview for page 2
 
     [SerializeField]
-    private GameObject contentLanguage;
+    private GameObject titleDetails; // title of the page 3 
     [SerializeField]
-    private GameObject contentList;
+    private GameObject audioDetails; // parent of the slider for audio
+    [SerializeField]
+    private Image loadImage; // empty image to load the image of the page 3 - gallery 
+    [SerializeField]
+    private GameObject playStopButton; //button for playing and pausing the audio
+    [SerializeField]
+    private Image playImage; //image for play icon for playStopButton
+    [SerializeField]
+    private Image stopImage; //image for stop icon for playStopButton
 
     [SerializeField]
-    private GameObject titleDetails;
+    private GameObject languagePanel; // panel for page 1 - Language page
     [SerializeField]
-    private GameObject audioDetails;
+    private GameObject listPanel; // panel for page 2 - List page
     [SerializeField]
-    private Image loadImage;
+    private GameObject detailsPanel; // panel for page 3 - Details page
     [SerializeField]
-    private GameObject playStopButton;
-    [SerializeField]
-    private Image playImage;
-    [SerializeField]
-    private Image stopImage;
+    private GameObject detTextPanel; // panel for page 3 - Details page - text
 
     [SerializeField]
-    private GameObject languagePanel;
-    [SerializeField]
-    private GameObject listPanel;
-    [SerializeField]
-    private GameObject detailsPanel;
-    [SerializeField]
-    private GameObject detTextPanel;
+    private AudioSource audioSource; // Audio sorce for playing audio
 
-    [SerializeField]
-    private AudioSource audioSource;
+    private Slider slider; // slider for fetching the slider component from audioDetails
 
-    private Slider slider;
-
+    //TranslatedContentsData clas - for storing the data from json
     [System.Serializable]
     public class TranslatedContentsData
     {
@@ -61,6 +59,7 @@ public class JSONReader : MonoBehaviour
         public string LanguageName;
         public Topic[] Topics;
     }
+    // Topic class - for storing the data from json - stores Topic data
     [System.Serializable]
     public class Topic
     {
@@ -68,6 +67,7 @@ public class JSONReader : MonoBehaviour
         public Media[] Media;
         public string Details;
     }
+    // Media class - for storing the data from json - stores Media data
     [System.Serializable]
     public class Media
     {
@@ -75,6 +75,7 @@ public class JSONReader : MonoBehaviour
         public string FilePath;
         public Photo[] Photos;
     }
+    //Photo class - for storing the data from json - stores Photo data
     [System.Serializable]
     public class Photo
     {
@@ -82,6 +83,7 @@ public class JSONReader : MonoBehaviour
         public string Name;
     }
 
+    //JsonDataList for turning the clas into a list
     [System.Serializable]
     public class JsonDataList
     {
@@ -90,20 +92,19 @@ public class JSONReader : MonoBehaviour
 
     public JsonDataList myJsonDataList = new JsonDataList();
 
-
     private void Awake()
     {
-        StartCoroutine(GetRequest(Path.Combine(Application.streamingAssetsPath, "example.json")));
-        //myJsonDataList = JsonUtility.FromJson<JsonDataList>(textJSON.text);    
+        //Call coroutine GetRequest - fetch the json file from Application.streamingAssetsPath and write into Application.persistentDataPath
+        StartCoroutine(GetRequest(Path.Combine(Application.streamingAssetsPath, "example.json")));  
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         playStopButton.GetComponent<Button>().onClick.AddListener(PlayStopAudio);
     }
 
-    //Load JSON file into Application.persistentDaatPath. load from there into json parser and start generating buttons
+    //Loading of files:
+    //Load JSON file into Application.persistentDaatPath. Call coroutine LoadingJson.
     IEnumerator GetRequest(string path)
     {
         WWW loadDB = new WWW(path);
@@ -111,7 +112,7 @@ public class JSONReader : MonoBehaviour
         File.WriteAllBytes(Application.persistentDataPath + "/example.json", loadDB.bytes);
         yield return StartCoroutine(LoadingJson());
     }
-
+    // Load the json file from Application.persistentDataPath and store it into myJsonDataList. Call GenerateLanguageButtons and coroutine GetEverythingElse()
     IEnumerator LoadingJson()
     {
         string path = Application.persistentDataPath + "/example.json";
@@ -125,7 +126,7 @@ public class JSONReader : MonoBehaviour
         yield return StartCoroutine(GetEverythingElse());
     }
 
-    //Load media to Application.persistentDataPath
+    //Go through the myJsonDataList and load meadia (Audio and photo) from Application.streamingAssetsPath into Application.persistentDataPath with coroutine GetFile
     IEnumerator GetEverythingElse()
     {
         string destination = Application.persistentDataPath;
@@ -154,6 +155,7 @@ public class JSONReader : MonoBehaviour
         }
         yield return null;
     }
+    //Load the file from Application.streamingAssetsPath and write it into Application.persistentDataPath
     IEnumerator GetFile(string path, string destination, string orgPath)
     {
         WWW loadDB = new WWW(path);
@@ -161,8 +163,8 @@ public class JSONReader : MonoBehaviour
         File.WriteAllBytes(destination + "/"+ orgPath, loadDB.bytes);
     }
 
-
-    //Generate Language buttons for page 1
+    //Generate Language buttons for page 1 from myJsonDataList
+    //Generated buttons have two listeners, one for panel switching, one for loading the list of the topic buttons for page 2.
     public void GenerateLanguageButton()
     {
         foreach(TranslatedContentsData item in myJsonDataList.TranslatedContents)
@@ -174,14 +176,15 @@ public class JSONReader : MonoBehaviour
         }
     }
 
-    //Changeing betwwen panels - used for all generated buttons
+    //Changeing betwwen panels - used for all generated buttons - switch from page 1 to page 2 and from page 2 to page 3
     void ChangePanels(GameObject current, GameObject next)
     {
         current.SetActive(false);
         next.SetActive(true);
     }
-    
-    //Generate List buttons for page 2
+
+    //Generate List buttons for page 2 from myJsonDataList from specific language that was selected.
+    //Buttons have two listeners, one for panel switching, one for loading the details of the topic buttons for page 3.
     public void GenerateListButtons(int index)
     {
         int counter = 1;
@@ -209,7 +212,9 @@ public class JSONReader : MonoBehaviour
             UnityEngine.Object.Destroy(listChild[i].gameObject);
         }
     }
-    
+
+    //Load title, audio and gallery for page 3 from myJsonDataList from specific topic that was selected.
+    //Both audio and images for the gallery are loaded from coroutines. The gallery switching is also implemented through a coroutine
     public void SetUpDetails(Topic top, string number)
     {
         TextMeshProUGUI[] texts = titleDetails.GetComponentsInChildren<TextMeshProUGUI>();
@@ -258,7 +263,25 @@ public class JSONReader : MonoBehaviour
             TimeSpan ts = TimeSpan.FromSeconds(audioSource.clip.length);
             double minutes = ts.Minutes;
             double seconds = ts.Seconds;
-            duration = minutes.ToString() + ":" + seconds.ToString();
+            string secStr;
+            string minStr;
+            if (minutes < 10)
+            {
+                minStr = "0" + minutes.ToString();
+            }
+            else
+            {
+                minStr = minutes.ToString();
+            }
+            if (seconds < 10)
+            {
+                secStr = "0" + seconds.ToString();
+            }
+            else
+            {
+                secStr = seconds.ToString();
+            }
+            duration = minStr + ":" + secStr;
             audioDetails.GetComponentInChildren<TextMeshProUGUI>().text = "00:00 / " + duration;
             slider.maxValue = audioSource.clip.length;
             audioSource.Play();
@@ -272,7 +295,25 @@ public class JSONReader : MonoBehaviour
             TimeSpan ts = TimeSpan.FromSeconds(audioSource.time);
             double min = ts.Minutes;
             double sec = ts.Seconds;
-            string curDur = min.ToString() + ":" + sec.ToString();
+            string secStr;
+            string minStr;
+            if (min < 10)
+            {
+                minStr = "0" + min.ToString();
+            }
+            else
+            {
+                minStr = min.ToString();
+            }
+            if (sec < 10)
+            {
+                secStr = "0" + sec.ToString();
+            }
+            else
+            {
+                secStr = sec.ToString();
+            }
+            string curDur = minStr + ":" + secStr;
             text.text = curDur + " / " + duration;
             if (slider.value < audioSource.clip.length)
             {
@@ -315,7 +356,7 @@ public class JSONReader : MonoBehaviour
         }
     }
 
-    //Play Stop audio on click 
+    //Play or pause audio on click of PlayStopButton. Changeing of the sprite image
     public void PlayStopAudio()
     {
         if (audioSource.isPlaying)
@@ -341,6 +382,8 @@ public class JSONReader : MonoBehaviour
         playImage.gameObject.SetActive(false);
         stopImage.gameObject.SetActive(true);
         detTextPanel.SetActive(false);
+        slider.value = 0;
+        audioDetails.GetComponentInChildren<TextMeshProUGUI>().text = "00:00 / 00:00";
         StopAllCoroutines();
     }
 }
